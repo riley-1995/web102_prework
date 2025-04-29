@@ -107,6 +107,7 @@ function filterUnfundedOnly() {
 
     // use filter() to get a list of games that have not yet met their goal
     let unfunded = GAMES_JSON.filter(game => {return game.pledged < game.goal});
+    console.log("Unfunded: ", unfunded.length);
 
     // use the function we previously created to add the unfunded games to the DOM
     addGamesToPage(unfunded);
@@ -121,6 +122,7 @@ function filterFundedOnly() {
 
     // use the function we previously created to add unfunded games to the DOM
     addGamesToPage(funded);
+    console.log("Funded: ", funded.length);
 }
 
 // show all games
@@ -129,7 +131,7 @@ function showAllGames() {
 
     // add all games from the JSON data to the DOM
     addGamesToPage(GAMES_JSON)
-
+    console.log("Total Games: ", GAMES_JSON.length);
 }
 
 // select each button in the "Our Games" section
