@@ -20,6 +20,11 @@ body {
     margin-top: -10px;
 }
 
+#description-container {
+    text-align: center;
+    margin: 0 auto;
+}
+
 .stats-container {
     display: flex;
     align-items: center;
