@@ -29,26 +29,36 @@ const gamesContainer = document.getElementById("games-container");
 function addGamesToPage(games) {
 
     // loop over each item in the data
-
-
+    for (let game of games){
         // create a new div element, which will become the game card
-
+        let div = document.createElement('div')
 
         // add the class game-card to the list
-
+        div.classList.add('game-card')
 
         // set the inner HTML using a template literal to display some info 
         // about each game
         // TIP: if your images are not displaying, make sure there is space
         // between the end of the src attribute and the end of the tag ("/>")
-
+        div.innerHTML = `
+        <img class='game-img' src='${game.img}' />
+        <h4>${game.name}</h4>
+        <p class='game-description'>${game.description}</p>
+        <div class='game-stats'>
+            <p>Pledged: ${game.pledged}</p>
+            <p>Goal: ${game.goal}</p>
+            <p>Backers: ${game.backers}</p>
+        </div>
+        `
 
         // append the game to the games-container
-
+        gamesContainer.append(div)
+    }
 }
 
 // call the function we just defined using the correct variable
 // later, we'll call this function using a different list of games
+addGamesToPage(GAMES_JSON)
 
 
 /*************************************************************************************
@@ -61,19 +71,28 @@ function addGamesToPage(games) {
 const contributionsCard = document.getElementById("num-contributions");
 
 // use reduce() to count the number of total contributions by summing the backers
-
+const totalContributions = GAMES_JSON.reduce((total, currentGame) =>  total + currentGame.backers, 0);
 
 // set the inner HTML using a template literal and toLocaleString to get a number with commas
-
+contributionsCard.innerHTML = `
+<div> ${totalContributions.toLocaleString()} </div>
+`
 
 // grab the amount raised card, then use reduce() to find the total amount raised
 const raisedCard = document.getElementById("total-raised");
+const totalRaised = GAMES_JSON.reduce((total, currentGame) => total+currentGame.pledged, 0);
 
 // set inner HTML using template literal
-
+raisedCard.innerHTML = `
+<div> $${totalRaised.toLocaleString()} </div>
+`
 
 // grab number of games card and set its inner HTML
 const gamesCard = document.getElementById("num-games");
+const numGames = GAMES_JSON.length;
+gamesCard.innerHTML = `
+<div> ${numGames} </div>
+`
 
 
 /*************************************************************************************

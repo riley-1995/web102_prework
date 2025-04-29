@@ -62,6 +62,15 @@ body {
     width: 300px;
     text-align: center;
     border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+}
+.game-card .game-description {
+    margin-top: auto;
+}
+
+.game-card .game-stats {
+    margin-top: auto;
 }
 
 .game-card:hover {
